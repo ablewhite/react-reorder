@@ -16,8 +16,9 @@
   function createOffsetStyles (event, props) {
     var top = (!props.lock || props.lock === 'horizontal') ? mouseOffset.clientY - mouseDown.clientY : 0;
     var left = (!props.lock || props.lock === 'vertical') ? mouseOffset.clientX - mouseDown.clientX : 0;
+	  var scale = (!props.scale) ? '' : ', scale(' + props.scale + ')';
 
-    return 'translate(' + left + 'px,' + top + 'px)';
+    return 'translate(' + left + 'px,' + top + 'px)' + scale;
   }
 
   function getScrollOffsetX (rect, node) {
@@ -772,6 +773,7 @@
       placeholderClassName: PropTypes.string,
       draggedClassName: PropTypes.string,
       lock: PropTypes.string,
+	    scale: PropTypes.number,
       holdTime: PropTypes.number,
       touchHoldTime: PropTypes.number,
       mouseHoldTime: PropTypes.number,
@@ -791,6 +793,7 @@
       placeholderClassName: 'placeholder',
       draggedClassName: 'dragged',
       // lock: direction,
+	    // scale: 1,
       holdTime: 0,
       // touchHoldTime: 0,
       // mouseHoldTime: 0,
